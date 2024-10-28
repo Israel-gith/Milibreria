@@ -1,0 +1,62 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./example.tsx";
+import * as MyButton from "./mybutton.stories.tsx";
+
+<Meta of={MyButton} title="MyButton" />
+
+# MyButton
+Este es el componente de botón personalizado, con opciones de personalización de color, tamaño, y comportamiento en hover.
+
+#### Example - Default
+<Canvas of={MyButton.Default} />
+
+## Usage
+```ts
+
+import { MyButton } from 'milibreria';
+
+function Example() {
+  return (
+    <MyButton
+      text="Default Button"
+      textColor="white"
+      bgColor="blue"
+      borderColor="black"
+      borderWidth={1}
+      hoverTextColor="yellow"
+      hoverBgColor="darkblue"
+      size="medium"
+      disabled={false}
+      onClick={() => alert("Default Button Clicked")}
+    />
+  );
+}
+
+export default Example;
+
+#### Example - Secondary
+<Canvas of={MyButton.Secondary} />
+
+## Usage
+```ts
+
+import { MyButton } from 'milibreria';
+
+function Example() {
+  return (
+    <MyButton
+      text="Large Button"
+      textColor="white"
+      bgColor="green"
+      borderColor="darkgreen"
+      borderWidth={2}
+      hoverTextColor="lightgreen"
+      hoverBgColor="darkgreen"
+      size="large"
+      disabled={false}
+      onClick={() => alert("Large Button Clicked")}
+    />
+  );
+}
+
+export default Example;

@@ -1,0 +1,33 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./example";
+import * as IsraelRD from "./israelrd.stories.tsx";
+
+<Meta of={IsraelRD} title="IsraelRD" />
+
+# IsraelRD
+
+Este es un componente de tarjeta personalizado, que permite opciones de personalización como avatar, título, fecha, imagen, descripción y un botón opcional. Incluye un control deslizante que permite ajustar el tamaño del texto dentro de la tarjeta.
+
+#### Example - Default
+<Canvas of={IsraelRD.Default} />
+
+## Usage
+```tsx
+import { IsraelRD } from 'milibreria';
+
+functionExample() {
+  return (
+    <IsraelRD
+      avatar="../avatar04.png"
+      altAvatar="Avatar 2"
+      title="Otra Noticia"
+      date="29 de Octubre, 2024"
+      image="../mario.jpg"
+      altImage="Imagen de Otra Noticia"
+      description="Este es otro contenido de ejemplo para la tarjeta."
+      likes={5}
+    />
+  );
+}
+
+export default Example;

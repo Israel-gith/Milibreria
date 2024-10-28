@@ -1,0 +1,45 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./example"; // Importamos el componente Example
+import * as MyFavourite from "./myfavourite.stories.tsx";
+
+<Meta of={MyFavourite} title="MyFavourite" />
+
+# MyFavourite
+Componente que personaliza el IconButton y FavoriteIcon de MUI.
+
+#### Example - Default
+<Canvas of={MyFavourite.Default} />
+
+## Usage
+```ts
+import { MyFavourite } from 'milibreria';
+
+function Example() {
+  return (
+    <MyFavourite
+      color="red"
+      disabled={false}
+      onClick={() => alert("Favorite Clicked")}
+    />
+  );
+}
+
+export default Example;
+
+
+Example - Disabled
+<Canvas of={MyFavourite.Disabled} />
+
+import { MyFavourite } from 'milibreria';
+
+function Example() {
+  return (
+    <MyFavourite
+      color="gray"
+      disabled={true}
+      onClick={() => alert("This button is disabled")}
+    />
+  );
+}
+
+export default Example;
