@@ -1,31 +1,57 @@
 import { Canvas, Meta } from "@storybook/blocks";
-import Example from "./example";
+import Example from "./example.tsx";
 import * as IsraelRD from "./israelrd.stories.tsx";
 
 <Meta of={IsraelRD} title="IsraelRD" />
 
 # IsraelRD
-
-Este es un componente de tarjeta personalizado, que permite opciones de personalización como avatar, título, fecha, imagen, descripción y un botón opcional. Incluye un control deslizante que permite ajustar el tamaño del texto dentro de la tarjeta.
+Componente Switch que cambia el color de fondo de la página.
 
 #### Example - Default
 <Canvas of={IsraelRD.Default} />
 
 ## Usage
-```tsx
+```ts
 import { IsraelRD } from 'milibreria';
 
-functionExample() {
+function Example() {
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    document.body.style.backgroundColor = event.target.checked ? '#333' : '#fff';
+  };
+
   return (
     <IsraelRD
-      avatar="../avatar04.png"
-      altAvatar="Avatar 2"
-      title="Otra Noticia"
-      date="29 de Octubre, 2024"
-      image="../mario.jpg"
-      altImage="Imagen de Otra Noticia"
-      description="Este es otro contenido de ejemplo para la tarjeta."
-      likes={5}
+      checked={checked}
+      onChange={handleChange}
+    />
+  );
+}
+
+export default Example;
+
+#### Example - Alternate
+<Canvas of={IsraelRD.Alternate} />
+
+## Usage
+```ts
+
+import { IsraelRD } from 'milibreria';
+
+function Example() {
+  const [checked, setChecked] = React.useState(false);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    document.body.style.backgroundColor = event.target.checked ? '#333' : '#fff';
+  };
+
+  return (
+    <IsraelRD
+      checked={checked}
+      onChange={handleChange}
     />
   );
 }

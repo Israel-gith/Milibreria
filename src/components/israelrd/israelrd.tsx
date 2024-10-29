@@ -1,133 +1,85 @@
-import { useState } from "react";
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  IconButton,
-  Stack,
-  Box,
-  Avatar,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Slider,
-  
-} from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShareIcon from "@mui/icons-material/Share";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import TelegramIcon from "@mui/icons-material/Telegram";
+import React, { useState } from 'react';
+import { styled } from '@mui/material/styles';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
+const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+  width: 62,
+  height: 34,
+  padding: 7,
+  '& .MuiSwitch-switchBase': {
+    margin: 1,
+    padding: 0,
+    transform: 'translateX(6px)',
+    '&.Mui-checked': {
+      color: '#fff',
+      transform: 'translateX(22px)',
+      '& .MuiSwitch-thumb:before': {
+        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+          '#fff',
+        )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`,
+      },
+      '& + .MuiSwitch-track': {
+        opacity: 1,
+        backgroundColor: '#8796A5',
+      },
+    },
+  },
+  '& .MuiSwitch-thumb': {
+    backgroundColor: '#001e3c',
+    width: 32,
+    height: 32,
+    '&::before': {
+      content: "''",
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      left: 0,
+      top: 0,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+        '#fff',
+      )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
+    },
+  },
+  '& .MuiSwitch-track': {
+    opacity: 1,
+    backgroundColor: '#aab4be',
+    borderRadius: 20 / 2,
+  },
+}));
 
-export interface IsraelRDProps {
-  avatar: string;
-  altAvatar: string;
-  title: string;
-  date: string;
-  image: string;
-  altImage: string;
-  description: string;
-  likes: number;
-}
+const IsraelRD = () => {
+  const [darkMode, setDarkMode] = useState(false);
 
-
-function IsraelRD(props: IsraelRDProps) {
-  const { avatar, altAvatar, title, date, image, altImage, description, likes } = props;
-
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(likes);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [fontSize, setFontSize] = useState(16);
-
-  const handleLike = () => {
-    setLiked(!liked);
-    setLikeCount(likeCount + (liked ? -1 : 1));
-  };
-
-  const handleDialogOpen = () => setDialogOpen(true);
-  const handleDialogClose = () => setDialogOpen(false);
-
-  const handleSliderChange = (event: Event, newValue: number | number[]) => {
-    setFontSize(newValue as number);
+  const handleToggle = () => {
+    setDarkMode((prev) => !prev);
+    const body = document.body;
+    if (!darkMode) {
+      body.style.backgroundColor = '#121212'; // Color de fondo para modo oscuro
+      body.style.color = '#ffffff'; // Color de texto para modo oscuro
+    } else {
+      body.style.backgroundColor = '#ffffff'; // Color de fondo para modo claro
+      body.style.color = '#000000'; // Color de texto para modo claro
+    }
   };
 
   return (
-    <Stack direction="column" alignItems="center" sx={{ marginTop: 5, fontSize }}>
-      <Card elevation={12}>
-        <CardContent >
-          <Box display="flex" justifyContent="space-between" alignItems="center" >
-            <Avatar alt={altAvatar} src={avatar} />
-            <Box textAlign="center" >
-              <Typography variant="caption" color="text.secondary" sx={{ fontSize}}>
-                {title}
-              </Typography>
-              <br />
-              <Typography variant="caption" color="text.secondary" sx={{ fontSize}}>
-                {date}
-              </Typography>
-            </Box>
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          </Box>
-        </CardContent>
-
-        <CardMedia component="img" height="194" image={image} alt={altImage} />
-
-        <CardContent>
-          <Box sx={{ textAlign: "justify" }}>
-            <Typography sx={{ fontSize }} variant="subtitle1" color="text.primary">
-              {description}
-            </Typography>
-          </Box>
-          <Slider
-            value={fontSize}
-            onChange={handleSliderChange}
-            aria-labelledby="font-size-slider"
-            min={10}
-            max={30}
-            step={1}
-            valueLabelDisplay="auto"
-            sx={{ mt: 2 }}
+    <FormGroup>
+      <FormControlLabel
+        control={
+          <MaterialUISwitch 
+            sx={{ m: 1 }} 
+            checked={darkMode} 
+            onChange={handleToggle} 
           />
-          <Typography variant="subtitle2" >Tamaño de fuente</Typography>
-          
-          <br />
-
-          <Box sx={{ textAlign: "left", display: "flex", alignItems: "center" }}>
-            <IconButton onClick={handleLike} sx={{ alignSelf: "flex-start" }}>
-              <Typography>{likeCount}</Typography>
-              {liked ? <FavoriteIcon color="secondary" /> : <FavoriteBorderIcon color="secondary" />}
-            </IconButton>
-
-            <IconButton disabled={!liked} onClick={handleDialogOpen} sx={{ alignSelf: "flex-start" }}>
-              <ShareIcon />
-            </IconButton>
-          </Box>
-        </CardContent>
-
-        <Dialog open={dialogOpen} onClose={handleDialogClose}>
-          <DialogTitle>COMPARTIR</DialogTitle>
-          <DialogContent>
-            <DialogContentText>¿A través de qué plataforma quieres compartir?</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <IconButton onClick={() => { console.log("Enviando por WhatsApp"); handleDialogClose(); }}>
-              <WhatsAppIcon />
-            </IconButton>
-            <IconButton onClick={() => { console.log("Enviando por Telegram"); handleDialogClose(); }}>
-              <TelegramIcon />
-            </IconButton>
-          </DialogActions>
-        </Dialog>
-      </Card>
-    </Stack>
+        }
+        label="Modo Oscuro"
+      />
+    </FormGroup>
   );
-}
+};
 
 export default IsraelRD;

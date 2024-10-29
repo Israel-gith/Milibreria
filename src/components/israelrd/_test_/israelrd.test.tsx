@@ -1,28 +1,23 @@
 import React from "react";
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import IsraelRD from "../israelrd";
+import { describe, expect, it, vi } from "vitest"; // Importo vi en lugar de jest
+import { render, screen, fireEvent } from "@testing-library/react";
+import '@testing-library/jest-dom';
+import IsraelRD from "../israelrd"; // Importo mi componente IsraelRD
 
 describe("IsraelRD component", () => {
-  const props = {
-    avatar: "avatar-url.jpg",
-    altAvatar: "Avatar Alt Text",
-    title: "Título de Ejemplo",
-    date: "28 de Octubre, 2024",
-    image: "image-url.jpg",
-    altImage: "Imagen Alt Text",
-    description: "Descripción de ejemplo.",
-    likes: 10,
-  };
+  it("El switch se debería renderizar correctamente", () => {
+    render(<IsraelRD checked={false} onChange={() => {}} />); // Renderizo el componente con el estado inicial
+    const switchElement = screen.getByRole("switch"); // Busco el switch por su rol
+    expect(switchElement).toBeInTheDocument(); // Verifico que el switch esté en el documento
+    expect(switchElement).not.toBeChecked(); // Verifico que no esté marcado al inicio
+  });
 
-  it("debería renderizar correctamente en el DOM", () => {
-    render(<IsraelRD {...props} />);
-    
-    // Verifica que el título y la descripción se renderizan
-    expect(screen.getByText("Título de Ejemplo")).toBeInTheDocument();
-    expect(screen.getByText("Descripción de ejemplo.")).toBeInTheDocument();
-    
-    // Verifica que el contador de likes se renderiza
-    expect(screen.getByText("10")).toBeInTheDocument();
+  it("Debería cambiar el estado cuando se activa el switch", () => {
+    const handleChange = vi.fn(); // Simulo la función onChange con vi
+    render(<IsraelRD checked={false} onChange={handleChange} />); // Renderizo el componente
+
+    const switchElement = screen.getByRole("switch"); // Busco el switch
+    fireEvent.click(switchElement); // Simulo un clic en el switch
+    expect(handleChange).toHaveBeenCalled(); // Verifico que onChange se haya llamado
   });
 });
