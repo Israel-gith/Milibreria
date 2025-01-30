@@ -1,0 +1,4 @@
+node_modules
+#carpeta generada por el build se storybook
+storybook-static
+*storybook.log
