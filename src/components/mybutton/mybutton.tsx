@@ -20,20 +20,22 @@ function MyButton(props: MyButtonProps){
  const { bgcolor, text, txtcolor, bordercolor, borderwidth, hover:{hovertxtcolor, hoverbgcolor}, disabled, onClick, size } = props
  
  return(
- <Button
- type='button'
- onClick={onClick}
- disabled={disabled}
- size={size}
- sx={{backgroundColor: bgcolor, color: txtcolor,
-    hover: {backgroundColor: hoverbgcolor, color: hovertxtcolor}
-}}
- style={{
-    borderColor: bordercolor, 
-    borderWidth: borderwidth
- }}
+   <Button
+   type="button"
+   onClick={onClick}
+   disabled={disabled}
+   size={size}
+   sx={{
+     backgroundColor: bgcolor,
+     color: txtcolor,
+     border: `${borderwidth}px solid ${bordercolor}`,
+     "&:hover": {
+       backgroundColor: hoverbgcolor,
+       color: hovertxtcolor
+     }
+   }}
  >
- {text}
+   {text}
  </Button>
  )
 }
