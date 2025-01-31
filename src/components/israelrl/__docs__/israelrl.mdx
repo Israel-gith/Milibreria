@@ -1,0 +1,50 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./example.tsx";
+import * as IsraelRL from "./israelrl.stories.tsx";
+
+<Meta of={IsraelRL} title="IsraelRL" />
+
+# IsraelRL
+
+Componente AppBar con cambio de texto y colores.
+
+#### Example
+
+<Canvas of={IsraelRL.Primary} />
+
+## Usage
+
+```ts
+import {IsraelRL} from 'milibreria';
+
+function Example(){
+    return (
+        <IsraelRL
+         text: "Barra Primary" ,
+         textcolor: "black",
+         barcolor: "blue"  , 
+         onClick: () => alert("IsraelRL Primary"),
+        />
+    );
+};
+
+export default Example;
+```
+#### Example
+<Canvas of={IsraelRL.Secondary} />
+
+## Usage
+
+```ts
+import {IsraelRL} from 'milibreria';
+
+function Example(){
+    return (
+        <IsraelRL
+       text: "Barra Secondary" ,
+       textcolor: "white",
+       barcolor: "purple"  , 
+       onClick: () => alert("IsraelRL Secondary"),
+        />
+    );
+};
