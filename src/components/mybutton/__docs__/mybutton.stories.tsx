@@ -17,10 +17,8 @@ export const Primary: Story = {
  bordercolor: 'black',
  borderwidth: 2,
  disabled: false,
- hover:{
-     hovertxtcolor: "white",
-     hoverbgcolor: "yellow"
- },
+ hovertxtcolor: "white",
+ hoverbgcolor: "yellow",
  size: "large",
  onClick: () => alert("MyButton primary"),
  },
@@ -34,10 +32,8 @@ export const Secondary: Story = {
  bordercolor: 'yellow',
  borderwidth: 4,
  disabled: false,
- hover:{
-     hovertxtcolor: "red",
-    hoverbgcolor: "white"
-    },
+ hovertxtcolor: "red",
+ hoverbgcolor: "white",
  size: "small",
  onClick: () => alert("MyButton secondary"),
  },

@@ -8,16 +8,14 @@ export interface MyButtonProps{
  bordercolor: string; 
  borderwidth: number; 
  size?: "small" | "medium" | "large"; 
- hover: {
-    hovertxtcolor: string;
-    hoverbgcolor:string;
- };
+ hovertxtcolor: string;
+ hoverbgcolor:string;
  disabled?: boolean; 
  onClick?: MouseEventHandler<HTMLButtonElement>; 
 }
 
 function MyButton(props: MyButtonProps){
- const { bgcolor, text, txtcolor, bordercolor, borderwidth, hover:{hovertxtcolor, hoverbgcolor}, disabled, onClick, size } = props
+ const { bgcolor, text, txtcolor, bordercolor, borderwidth, hovertxtcolor, hoverbgcolor, disabled, onClick, size } = props
  
  return(
    <Button
