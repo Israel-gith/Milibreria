@@ -6,10 +6,8 @@ export interface MyButtonProps {
     bordercolor: string;
     borderwidth: number;
     size?: "small" | "medium" | "large";
-    hover: {
-        hovertxtcolor: string;
-        hoverbgcolor: string;
-    };
+    hovertxtcolor: string;
+    hoverbgcolor: string;
     disabled?: boolean;
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }

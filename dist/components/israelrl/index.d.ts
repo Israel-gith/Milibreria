@@ -1,1 +1,1 @@
-export { default as israelrlsraelrl } from './israelrl';
+export { default as IsraelRL } from './israelrl';
