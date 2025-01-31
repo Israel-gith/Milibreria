@@ -56,8 +56,6 @@
   },
   "peerDependencies": {
     "react": "19.0.0"
-  },
-  "dependencies": {
-    "milibreria": "github:Israel-gith/Milibreria"
   }
+
 }
